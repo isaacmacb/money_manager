@@ -36,10 +36,17 @@ public class ProfileEntity {
     private Boolean isActive;
     private String activationToken;
 
+    @Version
+    private Integer version;
+
     @PrePersist
     public void prePersist() {
         if (this.isActive == null) {
-            isActive = false;
+            this.isActive = false;
+        }
+        if (this.version == null) {
+            this.version = 0;
         }
     }
+
 }
